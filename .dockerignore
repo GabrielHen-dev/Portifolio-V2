@@ -1,0 +1,16 @@
+# Fora do contexto de build na raiz.
+
+node_modules
+dist
+build
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+*.md
+.vscode
+.idea
+coverage
+uploads
+*.log

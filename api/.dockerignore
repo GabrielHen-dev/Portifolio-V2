@@ -1,0 +1,17 @@
+# Fora do contexto de build da API (node_modules do host quebraria os binários nativos no Linux).
+
+node_modules
+
+dist
+.env
+.env.*
+!.env.example
+*.log
+.git
+.gitignore
+*.md
+.vscode
+.idea
+coverage
+uploads
+*.tsbuildinfo

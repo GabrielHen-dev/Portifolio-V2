@@ -1,0 +1,15 @@
+# Fora do contexto de build do site.
+
+node_modules
+
+dist
+.env
+.env.*
+*.log
+.git
+.gitignore
+*.md
+.vscode
+.idea
+coverage
+*.tsbuildinfo

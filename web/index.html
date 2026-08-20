@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- Documento base: metadados, SEO e script síncrono que aplica tema, paleta e idioma antes do primeiro paint. -->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Gabriel Henrique Desenvolvedor Full Stack</title>
+    <meta
+      name="description"
+      content="Portfolio de Gabriel Henrique: desenvolvedor full stack com foco em Node.js, React e DevOps (Docker, Kubernetes, Terraform)."
+    />
+    <meta name="author" content="Gabriel Henrique" />
+    <meta name="theme-color" content="#0c0d0e" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gabriel Henrique Desenvolvedor Full Stack" />
+    <meta
+      property="og:description"
+      content="Desenvolvedor full stack com pegada DevOps. Node.js, React, Docker, Kubernetes."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var PALETTES = ['redline', 'acid', 'amber', 'hud', 'mono'];
+
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var configured = localStorage.getItem('portfolio-default-mode');
+          var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+          var theme;
+          if (stored === 'light' || stored === 'dark') {
+            theme = stored;
+          } else if (configured === 'light' || configured === 'dark') {
+            theme = configured;
+          } else {
+            theme = prefersLight ? 'light' : 'dark';
+          }
+
+          root.classList.toggle('light', theme === 'light');
+          root.style.colorScheme = theme;
+
+          var accent = localStorage.getItem('portfolio-accent');
+          var palette = localStorage.getItem('portfolio-palette');
+
+          if (accent && /^#[0-9a-f]{6}$/i.test(accent)) {
+            root.dataset.palette = 'custom';
+            root.style.setProperty('--color-accent', accent);
+
+            var lin = function (c) {
+              c = c / 255;
+              return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+            };
+            var L =
+              0.2126 * lin(parseInt(accent.substr(1, 2), 16)) +
+              0.7152 * lin(parseInt(accent.substr(3, 2), 16)) +
+              0.0722 * lin(parseInt(accent.substr(5, 2), 16));
+            root.style.setProperty('--color-accent-ink', L > 0.45 ? '#0a0a0a' : '#ffffff');
+          } else if (palette && PALETTES.indexOf(palette) !== -1) {
+            root.dataset.palette = palette;
+          } else {
+            root.dataset.palette = 'redline';
+          }
+
+          var lang = localStorage.getItem('portfolio-lang');
+          var fromUrl = new URLSearchParams(location.search).get('lang');
+          var resolved = fromUrl === 'en' || fromUrl === 'pt' ? fromUrl : lang === 'en' ? 'en' : 'pt';
+          root.lang = resolved === 'en' ? 'en' : 'pt-BR';
+        } catch (e) {
+          root.dataset.palette = 'redline';
+        }
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Gabriel Henrique",
+        "jobTitle": "Desenvolvedor Full Stack",
+        "email": "Gabriel.Henrique061@outlook.com",
+        "url": "https://github.com/GabrielHen-dev",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Paulista",
+          "addressRegion": "PE",
+          "addressCountry": "BR"
+        },
+        "knowsAbout": ["Node.js", "TypeScript", "React", "Docker", "Kubernetes", "Terraform", "Python", "Java"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

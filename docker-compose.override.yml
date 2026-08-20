@@ -1,0 +1,6 @@
+# Ajustes so para maquina local. O Dokploy nao carrega este arquivo: ele roda o
+# compose com -f docker-compose.yml explicito, o que desativa o override.
+services:
+  web:
+    ports:
+      - "${WEB_PORT:-8080}:8080"

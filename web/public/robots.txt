@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# O painel nao tem nada de util para buscador e nao deve aparecer em resultado.
+Disallow: /admin
+Disallow: /api/
+
+# Quando o dominio definitivo estiver no ar, adicione a linha abaixo com a URL
+# absoluta (sitemap exige URL completa, nao caminho relativo):
+# Sitemap: https://seudominio.com/sitemap.xml
