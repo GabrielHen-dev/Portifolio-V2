@@ -1,4 +1,4 @@
-# Portfólio — Gabriel Henrique Sla
+# Portfólio — Gabriel Henrique
 
 Site pessoal com painel administrativo privado. O conteúdo (tecnologias, projetos, trajetória e textos)
 é editado pelo painel e aparece no site sem novo deploy.
